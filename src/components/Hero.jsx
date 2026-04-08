@@ -111,35 +111,70 @@ export default function Hero() {
               <h3 className="text-2xl font-serif text-white font-bold">Create Account</h3>
               <p className="text-sm text-white/60 mt-1.5">Start your forever journey</p>
             </div>
-            <form className="space-y-4">
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-[11px] font-semibold text-white/70 uppercase tracking-wider mb-1.5">First Name</label>
-                  <input type="text" placeholder="Ananya" className="w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-accent/60 transition-all" />
-                </div>
-                <div>
-                  <label className="block text-[11px] font-semibold text-white/70 uppercase tracking-wider mb-1.5">Last Name</label>
-                  <input type="text" placeholder="Shetty" className="w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-accent/60 transition-all" />
-                </div>
-              </div>
+            <form className="space-y-3">
               <div>
-                <label className="block text-[11px] font-semibold text-white/70 uppercase tracking-wider mb-1.5">Community</label>
-                <select className="w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 text-sm text-white/80 focus:outline-none focus:border-accent/60 transition-all">
-                  <option className="bg-gray-900">Select Community</option>
-                  <option className="bg-gray-900">Hindu</option>
-                  <option className="bg-gray-900">Christian</option>
+                <label className="block text-[10px] font-semibold text-white/70 uppercase tracking-wider mb-1">On Behalf</label>
+                <select className="w-full bg-white/10 border border-white/15 rounded-xl px-3 py-2.5 text-[13px] text-white/80 focus:outline-none focus:border-accent/60 transition-all">
+                  <option className="bg-gray-900">Self</option>
+                  <option className="bg-gray-900">Son</option>
+                  <option className="bg-gray-900">Daughter</option>
+                  <option className="bg-gray-900">Brother</option>
+                  <option className="bg-gray-900">Sister</option>
+                  <option className="bg-gray-900">Friend</option>
                 </select>
               </div>
-              <div>
-                <label className="block text-[11px] font-semibold text-white/70 uppercase tracking-wider mb-1.5">Phone</label>
-                <input type="tel" placeholder="+91 9876543210" className="w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-accent/60 transition-all" />
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[10px] font-semibold text-white/70 uppercase tracking-wider mb-1">First Name</label>
+                  <input type="text" placeholder="First Name" className="w-full bg-white/10 border border-white/15 rounded-xl px-3 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-accent/60 transition-all" />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-semibold text-white/70 uppercase tracking-wider mb-1">Last Name</label>
+                  <input type="text" placeholder="Last Name" className="w-full bg-white/10 border border-white/15 rounded-xl px-3 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-accent/60 transition-all" />
+                </div>
               </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[10px] font-semibold text-white/70 uppercase tracking-wider mb-1">Gender</label>
+                  <select className="w-full bg-white/10 border border-white/15 rounded-xl px-3 py-2.5 text-[13px] text-white/80 focus:outline-none focus:border-accent/60 transition-all">
+                    <option className="bg-gray-900">Male</option>
+                    <option className="bg-gray-900">Female</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-[10px] font-semibold text-white/70 uppercase tracking-wider mb-1">Date Of Birth</label>
+                  <input type="text" placeholder="DD/MM/YYYY" className="w-full bg-white/10 border border-white/15 rounded-xl px-3 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-accent/60 transition-all" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-[10px] font-semibold text-white/70 uppercase tracking-wider mb-1">Email address</label>
+                <input type="email" placeholder="Email address" className="w-full bg-white/10 border border-white/15 rounded-xl px-3 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-accent/60 transition-all" />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[10px] font-semibold text-white/70 uppercase tracking-wider mb-1">Password</label>
+                  <input type="password" placeholder="••••••••" className="w-full bg-white/10 border border-white/15 rounded-xl px-3 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-accent/60 transition-all" />
+                  <p className="text-[9px] text-white/40 mt-1">Minimum 8 characters</p>
+                </div>
+                <div>
+                  <label className="block text-[10px] font-semibold text-white/70 uppercase tracking-wider mb-1">Confirm password</label>
+                  <input type="password" placeholder="••••••••" className="w-full bg-white/10 border border-white/15 rounded-xl px-3 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-accent/60 transition-all" />
+                  <p className="text-[9px] text-white/40 mt-1">Minimum 8 characters</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-2 mt-2 pt-2">
+                <input type="checkbox" id="terms" className="mt-0.5 rounded border-white/15 bg-white/10 text-accent focus:ring-accent/60" />
+                <label htmlFor="terms" className="text-[10px] text-white/60">
+                  By signing up you agree to our <a href="#" className="text-accent hover:underline">terms and conditions.</a>
+                </label>
+              </div>
+
               <motion.button type="button" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-                className="w-full bg-gradient-to-r from-primary to-primary-hover text-white py-3.5 rounded-xl font-bold text-sm shadow-lg mt-2 flex items-center justify-center gap-2">
-                Create Free Profile <span className="text-accent">→</span>
+                className="w-full bg-gradient-to-r from-primary to-primary-hover text-white py-3 rounded-xl font-bold text-sm shadow-lg mt-3 flex items-center justify-center gap-2">
+                Create Account
               </motion.button>
             </form>
-            <p className="text-[11px] text-white/40 text-center mt-4">By registering, you agree to our Terms & Privacy Policy</p>
           </div>
         </motion.div>
       </div>

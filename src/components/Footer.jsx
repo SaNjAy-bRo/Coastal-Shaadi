@@ -22,7 +22,7 @@ export default function Footer() {
                 </span>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                Honouring Hindu and Christian matrimonial traditions across the beautiful Udupi-Mangalore coastal belt. Your privacy, our promise.
+                Honouring our community matrimonial traditions across the beautiful Udupi-Mangalore coastal belt. Your privacy, our promise.
               </p>
               <div className="flex gap-3">
                 {['FB', 'IG', 'YT', 'WA'].map((s) => (
@@ -91,7 +91,7 @@ export default function Footer() {
               &copy; {new Date().getFullYear()} Coastal Shaadi. All rights reserved.
             </p>
             <p className="text-gray-500 text-xs flex items-center gap-1">
-              Made with <Heart size={12} className="text-primary" fill="currentColor" /> in Mangalore
+              Made with <Heart size={12} className="text-primary" fill="currentColor" /> in Udupi
             </p>
           </div>
         </div>
