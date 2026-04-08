@@ -1,0 +1,13 @@
+
+> coastal-shaadhi@0.0.0 build
+> vite build
+
+[36mvite v8.0.7 [32mbuilding client environment for production...[36m[39m
+[2Ktransforming...✓ 2134 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.78 kB │ gzip:   0.42 kB
+dist/assets/index-Ca1sl_3v.css   56.27 kB │ gzip:   8.79 kB
+dist/assets/index-gmFdHqbl.js   383.58 kB │ gzip: 116.25 kB
+
+[32m✓ built in 721ms[39m
