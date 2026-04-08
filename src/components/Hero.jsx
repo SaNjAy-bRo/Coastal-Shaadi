@@ -71,23 +71,23 @@ export default function Hero() {
             <span className="text-accent text-xs sm:text-sm tracking-[0.25em] uppercase font-semibold">A Century of Coastal Commitments</span>
           </motion.div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-serif font-bold text-white leading-[1.1] mb-6 drop-shadow-xl">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-serif font-bold text-white leading-[1.1] mb-6 [text-shadow:0_4px_8px_rgba(0,0,0,1),0_0_15px_rgba(0,0,0,1),0_0_30px_rgba(0,0,0,1)]">
             Finding{' '}
             <span className="relative inline-block">
-              <span className="text-accent italic font-light drop-shadow-md">the right person</span>
+              <span className="text-accent italic font-light drop-shadow-2xl">the right person</span>
               <motion.span initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 1.2, duration: 0.8 }} className="absolute -bottom-2 left-0 w-full h-0.5 bg-accent origin-left" />
             </span>
             <br className="hidden sm:block" />
             <span className="text-white/90">to grow old with,</span>
             <br />
             made{' '}
-            <span className="relative text-accent italic font-light drop-shadow-md">
+            <span className="relative text-accent italic font-light drop-shadow-2xl">
               Easy
               <motion.span animate={{ rotate: [0, 10, -10, 0] }} transition={{ repeat: Infinity, duration: 4 }} className="absolute -top-3 -right-5 text-lg drop-shadow-none">✦</motion.span>
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg lg:text-xl text-white/70 max-w-xl leading-relaxed mb-10 mx-auto lg:mx-0 drop-shadow-md">
+          <p className="text-base sm:text-lg lg:text-xl text-white/95 font-medium max-w-xl leading-relaxed mb-10 mx-auto lg:mx-0 [text-shadow:0_2px_4px_rgba(0,0,0,1),0_0_10px_rgba(0,0,0,1)]">
             Dignified, private, and verified matches for the Udupi-Mangalore coastal community. Your traditions, your privacy, our commitment.
           </p>
 
