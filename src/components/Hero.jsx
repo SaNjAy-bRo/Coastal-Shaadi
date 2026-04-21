@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { LeafCorner, FloatingDots, MandalaPattern } from './Decorative';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, X } from 'lucide-react';
 
 const heroImages = [
   { src: "/images/hero-wedding.png", alt: "Traditional Wedding Ceremony" },
@@ -10,6 +10,7 @@ const heroImages = [
 
 export default function Hero() {
   const [currentImage, setCurrentImage] = useState(0);
+  const [religion, setReligion] = useState('');
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -146,9 +147,44 @@ export default function Hero() {
                   <input type="text" placeholder="DD/MM/YYYY" className="w-full bg-white/10 border border-white/15 rounded-xl px-3 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-accent/60 transition-all" />
                 </div>
               </div>
-              <div>
-                <label className="block text-[10px] font-semibold text-white/70 uppercase tracking-wider mb-1">Email address</label>
-                <input type="email" placeholder="Email address" className="w-full bg-white/10 border border-white/15 rounded-xl px-3 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-accent/60 transition-all" />
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[10px] font-semibold text-white/70 uppercase tracking-wider mb-1">Email address</label>
+                  <input type="email" placeholder="Email address" className="w-full bg-white/10 border border-white/15 rounded-xl px-3 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-accent/60 transition-all" />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-semibold text-white/70 uppercase tracking-wider mb-1">Religion</label>
+                  {religion === 'Other' ? (
+                    <div className="relative">
+                      <input 
+                        type="text" 
+                        placeholder="Enter Religion" 
+                        autoFocus
+                        className="w-full bg-white/10 border border-white/15 rounded-xl px-3 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-accent/60 transition-all pr-8" 
+                      />
+                      <button 
+                        type="button" 
+                        onClick={() => setReligion('')}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-white/50 hover:text-white"
+                      >
+                        <X size={14} />
+                      </button>
+                    </div>
+                  ) : (
+                    <select 
+                      value={religion}
+                      onChange={(e) => setReligion(e.target.value)}
+                      className="w-full bg-white/10 border border-white/15 rounded-xl px-3 py-2.5 text-[13px] text-white/80 focus:outline-none focus:border-accent/60 transition-all"
+                    >
+                      <option className="bg-gray-900" value="">Select Religion</option>
+                      <option className="bg-gray-900" value="Hindu">Hindu</option>
+                      <option className="bg-gray-900" value="Christian">Christian</option>
+                      <option className="bg-gray-900" value="Muslim">Muslim</option>
+                      <option className="bg-gray-900" value="Jain">Jain</option>
+                      <option className="bg-gray-900" value="Other">Others</option>
+                    </select>
+                  )}
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>

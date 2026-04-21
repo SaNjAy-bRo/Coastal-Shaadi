@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -12,7 +13,16 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const links = ['Home', 'About', 'Success Stories', 'Pricing', 'Contact'];
+  const location = useLocation();
+
+  const links = [
+    { name: 'Home', path: '/' },
+    { name: 'Active Members', path: '/login?type=members' },
+    { name: 'About', path: '/about' },
+    { name: 'Happy Stories', path: '/success-stories' },
+    { name: 'Pricing', path: '/pricing' },
+    { name: 'Contact', path: '/contact' }
+  ];
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${
@@ -24,7 +34,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group">
+          <Link to="/" className="flex items-center gap-2.5 group">
             <div className="relative">
               <Heart className={`w-7 h-7 transition-colors duration-300 ${scrolled ? 'text-primary' : 'text-accent'}`} fill="currentColor" strokeWidth={0} />
               <Heart className={`w-7 h-7 absolute inset-0 animate-ping opacity-20 ${scrolled ? 'text-primary' : 'text-accent'}`} fill="currentColor" strokeWidth={0} />
@@ -37,25 +47,27 @@ export default function Navbar() {
                 Premium Matrimony
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Links */}
           <div className="hidden lg:flex items-center gap-8">
             {links.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
+              <Link
+                key={item.name}
+                to={item.path}
                 className={`text-sm font-medium relative group transition-colors duration-300 ${
-                  scrolled ? 'text-gray-700 hover:text-primary' : 'text-white/90 hover:text-white'
+                  location.pathname === item.path
+                    ? (scrolled ? 'text-primary' : 'text-accent')
+                    : (scrolled ? 'text-gray-700 hover:text-primary' : 'text-white/90 hover:text-white')
                 }`}
               >
-                {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
-              </a>
+                {item.name}
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300 ${location.pathname === item.path ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+              </Link>
             ))}
-            <button className="bg-gradient-to-r from-primary to-primary-hover text-white px-7 py-2.5 rounded-full text-sm font-semibold shadow-lg hover:shadow-[0_4px_20px_rgba(128,0,0,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 border border-primary/20">
+            <Link to="/login?type=register" className="bg-gradient-to-r from-primary to-primary-hover text-white px-7 py-2.5 rounded-full text-sm font-semibold shadow-lg hover:shadow-[0_4px_20px_rgba(128,0,0,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 border border-primary/20 flex items-center justify-center">
               Register Free
-            </button>
+            </Link>
           </div>
 
           {/* Mobile */}
@@ -79,22 +91,29 @@ export default function Navbar() {
           >
             <div className="px-6 py-6 space-y-1">
               {links.map((item, i) => (
-                <motion.a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(' ', '-')}`}
+                <motion.div
+                  key={item.name}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-gray-800 font-medium hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
                 >
-                  {item}
-                </motion.a>
+                  <Link
+                    to={item.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`block px-4 py-3 font-medium rounded-lg transition-colors ${
+                      location.pathname === item.path
+                        ? 'text-primary bg-primary/10'
+                        : 'text-gray-800 hover:text-primary hover:bg-primary/5'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
               ))}
               <div className="pt-4">
-                <button className="w-full bg-primary text-white py-3 rounded-lg font-semibold shadow-md">
+                <Link to="/login?type=register" onClick={() => setMobileMenuOpen(false)} className="block w-full text-center bg-primary text-white py-3 rounded-lg font-semibold shadow-md">
                   Register Free
-                </button>
+                </Link>
               </div>
             </div>
           </motion.div>

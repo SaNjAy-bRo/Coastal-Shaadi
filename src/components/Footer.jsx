@@ -1,4 +1,5 @@
 import { Heart, MapPin, Phone, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -37,12 +38,19 @@ export default function Footer() {
             <div>
               <h4 className="text-accent text-xs font-bold uppercase tracking-[0.15em] mb-6">Quick Links</h4>
               <ul className="space-y-3">
-                {['Home', 'About Us', 'Browse Matches', 'Success Stories', 'Pricing', 'Blog'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200 flex items-center gap-2 group">
+                {[
+                  { name: 'Home', path: '/' },
+                  { name: 'Active Members', path: '/login?type=members' },
+                  { name: 'About Us', path: '/about' },
+                  { name: 'Happy Stories', path: '/success-stories' },
+                  { name: 'Pricing', path: '/pricing' },
+                  { name: 'Contact', path: '/contact' }
+                ].map((item) => (
+                  <li key={item.name}>
+                    <Link to={item.path} className="text-gray-400 hover:text-white text-sm transition-colors duration-200 flex items-center gap-2 group">
                       <span className="w-0 group-hover:w-2 h-px bg-accent transition-all duration-300" />
-                      {item}
-                    </a>
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
