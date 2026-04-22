@@ -40,7 +40,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {[
                   { name: 'Home', path: '/' },
-                  { name: 'Active Members', path: '/login?type=members' },
+                  { name: 'Active Members', path: '/active-members' },
                   { name: 'About Us', path: '/about' },
                   { name: 'Happy Stories', path: '/success-stories' },
                   { name: 'Pricing', path: '/pricing' },

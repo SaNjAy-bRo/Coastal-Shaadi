@@ -17,7 +17,7 @@ export default function Navbar() {
 
   const links = [
     { name: 'Home', path: '/' },
-    { name: 'Active Members', path: '/login?type=members' },
+    { name: 'Active Members', path: '/active-members' },
     { name: 'About', path: '/about' },
     { name: 'Happy Stories', path: '/success-stories' },
     { name: 'Pricing', path: '/pricing' },
