@@ -46,6 +46,7 @@ const plans = [
     ],
     highlight: true,
     cta: "Go Premium"
+  }
 ];
 
 export default function Packages() {
