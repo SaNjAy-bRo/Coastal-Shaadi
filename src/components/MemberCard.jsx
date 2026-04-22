@@ -1,9 +1,12 @@
 import React from 'react';
-import { User, Heart, Star, Ban, AlertTriangle } from 'lucide-react';
+import { User, Heart, Star, Ban, AlertTriangle, Lock } from 'lucide-react';
 import { useMembers } from '../context/MemberContext';
 
 export default function MemberCard({ member }) {
   const { shortlistedIds, interestedIds, ignoredIds, toggleShortlist, toggleInterest, toggleIgnore } = useMembers();
+
+  // Simulate current user is on Free Plan
+  const isFreePlan = true;
 
   const isShortlisted = shortlistedIds.includes(member.id);
   const isInterested = interestedIds.includes(member.id);
@@ -19,12 +22,24 @@ export default function MemberCard({ member }) {
       </div>
 
       {/* Profile Image */}
-      <div className="w-32 h-32 md:w-36 md:h-36 shrink-0 rounded-lg bg-gray-200 overflow-hidden relative">
+      <div 
+        className="w-32 h-32 md:w-36 md:h-36 shrink-0 rounded-lg bg-gray-200 overflow-hidden relative group cursor-pointer"
+        onClick={() => { if(isFreePlan) alert('Please upgrade to Premium to view photos clearly.'); }}
+      >
         {member.image ? (
-          <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+          <img src={member.image} alt={member.name} className={`w-full h-full object-cover transition-all duration-300 ${isFreePlan ? 'blur-md scale-110' : ''}`} />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300 text-white">
             <User className="w-14 h-14" />
+          </div>
+        )}
+        
+        {isFreePlan && (
+          <div className="absolute inset-0 bg-black/10 flex flex-col items-center justify-center text-white z-10 transition-colors group-hover:bg-black/30">
+            <div className="bg-black/50 p-2 rounded-full mb-1 backdrop-blur-sm">
+              <Lock className="w-5 h-5" />
+            </div>
+            <span className="text-[10px] font-bold uppercase tracking-wider bg-black/50 px-2 py-0.5 rounded backdrop-blur-sm">Photo Locked</span>
           </div>
         )}
         {isInterested && (
@@ -48,19 +63,33 @@ export default function MemberCard({ member }) {
 
         <div className="grid grid-cols-2 gap-y-2 gap-x-6 text-sm flex-1">
           <div className="flex"><span className="text-gray-400 min-w-[110px]">Age</span> <span className="text-gray-800 font-medium">{member.age}</span></div>
-          <div className="flex"><span className="text-gray-400 min-w-[110px]">Height</span> <span className="text-gray-800 font-medium">{member.height}</span></div>
-          <div className="flex"><span className="text-gray-400 min-w-[110px]">Religion</span> <span className="text-gray-800 font-medium">{member.religion}</span></div>
-          <div className="flex"><span className="text-gray-400 min-w-[110px]">Caste</span> <span className="text-gray-800 font-medium">{member.caste}</span></div>
-          <div className="flex"><span className="text-gray-400 min-w-[110px]">First Language</span> <span className="text-gray-800 font-medium">{member.language}</span></div>
-          <div className="flex"><span className="text-gray-400 min-w-[110px]">Marital Status</span> <span className="text-gray-800 font-medium">{member.maritalStatus}</span></div>
-          <div className="flex"><span className="text-gray-400 min-w-[110px]">Profession</span> <span className="text-gray-800 font-medium">{member.profession}</span></div>
           <div className="flex"><span className="text-gray-400 min-w-[110px]">Location</span> <span className="text-gray-800 font-medium">{member.location}</span></div>
+          <div className="flex"><span className="text-gray-400 min-w-[110px]">Profession</span> <span className="text-gray-800 font-medium">{member.profession}</span></div>
+          
+          <div className="flex"><span className="text-gray-400 min-w-[110px]">Height</span> 
+            {isFreePlan ? <span className="text-gray-300 flex items-center gap-1"><Lock size={12}/> Locked</span> : <span className="text-gray-800 font-medium">{member.height}</span>}
+          </div>
+          <div className="flex"><span className="text-gray-400 min-w-[110px]">Religion</span> 
+            {isFreePlan ? <span className="text-gray-300 flex items-center gap-1"><Lock size={12}/> Locked</span> : <span className="text-gray-800 font-medium">{member.religion}</span>}
+          </div>
+          <div className="flex"><span className="text-gray-400 min-w-[110px]">Caste</span> 
+            {isFreePlan ? <span className="text-gray-300 flex items-center gap-1"><Lock size={12}/> Locked</span> : <span className="text-gray-800 font-medium">{member.caste}</span>}
+          </div>
+          <div className="flex"><span className="text-gray-400 min-w-[110px]">First Language</span> 
+            {isFreePlan ? <span className="text-gray-300 flex items-center gap-1"><Lock size={12}/> Locked</span> : <span className="text-gray-800 font-medium">{member.language}</span>}
+          </div>
+          <div className="flex"><span className="text-gray-400 min-w-[110px]">Marital Status</span> 
+            {isFreePlan ? <span className="text-gray-300 flex items-center gap-1"><Lock size={12}/> Locked</span> : <span className="text-gray-800 font-medium">{member.maritalStatus}</span>}
+          </div>
         </div>
 
         {/* Actions */}
         <div className="border-t border-gray-100 mt-4 pt-3 flex items-center justify-start gap-6 text-xs font-medium text-gray-400">
-          <button className="flex flex-col items-center gap-1 hover:text-primary transition-colors">
-            <User className="w-4 h-4" /> <span>Full Profile</span>
+          <button 
+            onClick={() => { if(isFreePlan) alert('Please upgrade to Premium to view full profiles and contact details.'); }} 
+            className="flex flex-col items-center gap-1 hover:text-primary transition-colors"
+          >
+            {isFreePlan ? <Lock className="w-4 h-4" /> : <User className="w-4 h-4" />} <span>Full Profile</span>
           </button>
           <button
             onClick={() => toggleInterest(member.id)}
