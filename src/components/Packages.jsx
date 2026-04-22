@@ -46,22 +46,6 @@ const plans = [
     ],
     highlight: true,
     cta: "Go Premium"
-  },
-  {
-    name: "Elite",
-    price: "₹5,999",
-    duration: "12 Months",
-    icon: <Crown className="w-6 h-6" />,
-    features: [
-      "Unlimited connections",
-      "Unlimited chats & calls",
-      "WhatsApp connectivity",
-      "\"Top Match\" boost in Udupi-Mangalore",
-      "Elite User badge on profile"
-    ],
-    highlight: false,
-    cta: "Go Elite"
-  }
 ];
 
 export default function Packages() {
@@ -95,7 +79,7 @@ export default function Packages() {
         </motion.div>
 
         {/* Plans Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5">
+        <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-6 lg:gap-5">
           {plans.map((plan, idx) => (
             <motion.div
               key={idx}
